@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
   dvipng \
   ffmpeg \
   fonts-dejavu \
-  python-dev \
+  python3-dev \
   hdf5-tools \
   libhdf5-103 \
   libgmp-dev \
