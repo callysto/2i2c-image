@@ -1,14 +1,20 @@
-ARG BASE_CONTAINER=jupyter/scipy-notebook:latest
+ARG BASE_CONTAINER=jupyter/minimal-notebook:latest
 FROM $BASE_CONTAINER
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}
 
-# Install pip packages
+LABEL maintainer="Callysto Project contact@callysto.ca"
+
+# Fix: https://github.com/hadolint/hadolint/wiki/DL4006
+# Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 RUN apt-get update && apt-get install -y \
   build-essential \
+  cm-super \
   curl \
   dvipng \
+  ffmpeg \
   fonts-dejavu \
   python-dev \
   hdf5-tools \
@@ -24,6 +30,8 @@ RUN apt-get update && apt-get install -y \
   gnupg procps tzdata vim && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && ln -s /bin/tar /bin/gtar
 
+WORKDIR /tmp
+RUN git clone 
 
 RUN mkdir -p /etc/jupyter
 COPY ./jupyter_notebook_config.py /etc/jupyter/
@@ -42,7 +50,11 @@ RUN echo "Installing python packages using pip from requirements.txt..." \
     && ${NB_PYTHON_PREFIX}/bin/pip install --no-cache-dir -r /tmp/requirements.txt
 
 WORKDIR /tmp
-RUN jupyter nbextension install --py callystonb --sys-prefix && \
+
+# Install facets which does not have a pip or conda package at the moment
+RUN git clone https://github.com/PAIR-code/facets.git && \
+    jupyter nbextension install facets/facets-dist/ --sys-prefix && \
+    rm -rf /tmp/facets && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
@@ -52,10 +64,10 @@ ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
 RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
     fix-permissions "/home/${NB_USER}"
 
+RUN jupyter nbextension install --py callystonb --sys-prefix && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
 USER ${NB_UID}
 
 WORKDIR "${HOME}"
-
-ENV SHELL /bin/bash
-
-USER ${NB_UID}

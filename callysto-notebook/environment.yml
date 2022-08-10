@@ -4,13 +4,20 @@ channels:
 dependencies:
   - altair
   - astropy
+  - beautifulsoup4
   - black
   - boto3
-  - beautifulsoup4
+  - bokeh
+  - bottleneck
   - biopython
   - cartopy
+  - cloudpickle
   - colorlover
+  - conda-forge::blas=*=openblas
   - cvxopt
+  - cython
+  - dask
+  - dill
   - flake8
   - folium
   - fuzzywuzzy
@@ -21,38 +28,53 @@ dependencies:
   - gmp
   - geopandas
   - googletrans
+  - h5py
   - html5lib
   - imageio
+  - ipympl
   - ipysheet
   - ipycanvas
   - ipywidgets
   - lapack
   - lxml
   - markdown
+  - matplotlib-base
   - mpfr
   - mpld3
   - nbconvert
   - nbval
   - nltk
+  - numba
+  - numexpr
   - nodejs
   - openpyxl
   - pandas
+  - patsy
   - plotly
   - proj
+  - protobuf
   - psutil
   - pyqt
   - pysal
   - pyspellchecker
+  - pytables
   - pytest
   - pytrends
   - qgrid
   - rdflib
   - rise
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - seaborn
   - spacy
   - spacy-model-en_core_web_sm
   - spacy-model-en_core_web_md
   - spacy-model-en_core_web_lg
+  - sqlalchemy
+  - statsmodels
   - stats_can
+  - sympy
   - tensorflow
   - textblob
   - textstat
@@ -60,5 +82,7 @@ dependencies:
   - vega
   - vega_datasets
   - unidecode
+  - widgetsnbextension
   - wikipedia
   - wordcloud
+  - xlrd
