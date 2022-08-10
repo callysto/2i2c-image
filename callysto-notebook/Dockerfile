@@ -30,9 +30,6 @@ RUN apt-get update && apt-get install -y \
   gnupg procps tzdata vim && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && ln -s /bin/tar /bin/gtar
 
-WORKDIR /tmp
-RUN git clone 
-
 RUN mkdir -p /etc/jupyter
 COPY ./jupyter_notebook_config.py /etc/jupyter/
 
