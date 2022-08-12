@@ -5,6 +5,13 @@ This repository provides the environment to be run for
 defines a docker image based on
 [docker-stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/) which
 includes the packages and configurations needed to run the Callysto notebooks.
+The default is to build from the `juptyer/minimal-notebook:latest` image, but if
+you want more reproducible builds, that repository typically includes date tags
+as well and you can override the base image with e.g.
+```bash
+$ make build-all DOCKER_BUILD_ARGS="--build-arg \
+    BASE_CONTAINER=jupyter/minimal-notebook:2022-08-11"
+```
 
 
 ## Quick Build Instructions
@@ -47,3 +54,8 @@ $ conda-lock --mamba -k explicit --file environment.yml -p linux-64
 ```
 
 The Dockerfile will process that lock file and install those packages via mamba.
+Note that the underlying image for the docker build is usually
+`jupyter/minimal-notebook:latest`, but if you need something more reproducible
+you can try overriding the `BASE_CONTAINER` argument. That said, there are some
+apt-get update and apt-get install commands which might install slight different
+packages as the ubuntu repositories are updated.

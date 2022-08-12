@@ -13,7 +13,7 @@ COMMIT := $$(git log -1 --pretty=%h)
 # Need to list the images in build dependency order
 # All of the images
 ALL_IMAGES:= \
-	callysto-notebook
+	2i2c-image
 
 # Enable BuildKit for Docker build
 export DOCKER_BUILDKIT:=1
