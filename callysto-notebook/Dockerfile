@@ -46,6 +46,11 @@ COPY requirements.txt /tmp/requirements.txt
 RUN echo "Installing python packages using pip from requirements.txt..." \
     && ${NB_PYTHON_PREFIX}/bin/pip install --no-cache-dir -r /tmp/requirements.txt
 
+COPY Rprofile.site /opt/conda/lib/R/etc/Rprofile.site
+
+RUN Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
+  Rscript -e "install.packages('canlang', dependencies=TRUE)"
+
 WORKDIR /tmp
 
 # Install facets which does not have a pip or conda package at the moment
