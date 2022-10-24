@@ -36,6 +36,7 @@ dependencies:
   - ipysheet
   - ipycanvas
   - ipywidgets
+  - jupyterlab-blockly
   - lapack
   - lxml
   - markdown
@@ -55,6 +56,7 @@ dependencies:
   - proj
   - protobuf
   - psutil
+  - pyppeteer
   - pyqt
   - pysal
   - pyspellchecker
