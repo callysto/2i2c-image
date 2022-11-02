@@ -46,6 +46,8 @@ dependencies:
   - nbconvert
   - nbval
   - nltk
+  - notebook[qtpdf]
+  - notebook[qtpng]
   - numba
   - numexpr
   - nodejs
@@ -63,6 +65,7 @@ dependencies:
   - pytables
   - pytest
   - pytrends
+  - qgrid
   - r-base
   - r-essentials
   - r-car
@@ -94,6 +97,7 @@ dependencies:
   - r-testthat
   - r-tidyverse
   - rdflib
+  - rise
   - scikit-image
   - scikit-learn
   - scipy
