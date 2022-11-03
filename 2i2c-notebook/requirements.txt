@@ -18,3 +18,5 @@ wbdata
 jupyter-tree-download
 # Workaround for https://github.com/jupyterhub/nbgitpuller/issues/176 waiting for conda
 nbgitpuller
+# Workaround for qgrid maintenance issues
+git+https://github.com/ianabc/qgrid.git@ipywidgets8-jlab3

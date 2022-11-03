@@ -38,6 +38,7 @@ USER ${NB_UID}
 COPY conda-linux-64.lock /tmp/conda-linux-64.lock
 RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
     mamba clean --all -y -f && \
+    conda install --yes rise && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
@@ -46,16 +47,12 @@ COPY requirements.txt /tmp/requirements.txt
 RUN echo "Installing python packages using pip from requirements.txt..." \
     && ${NB_PYTHON_PREFIX}/bin/pip install --no-cache-dir -r /tmp/requirements.txt
 
-COPY Rprofile.site /opt/conda/lib/R/etc/Rprofile.site
-
-RUN Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
-  Rscript -e "install.packages('canlang', dependencies=TRUE)"
-
 WORKDIR /tmp
-
 # Install facets which does not have a pip or conda package at the moment
+# Also add qgrid extension because conda package is currently broken
 RUN git clone https://github.com/PAIR-code/facets.git && \
     jupyter nbextension install facets/facets-dist/ --sys-prefix && \
+    jupyter-nbclassic-extension enable qgrid --py --sys-prefix && \
     rm -rf /tmp/facets && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
@@ -70,6 +67,9 @@ RUN jupyter nbextension install --py callystonb --sys-prefix && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
-USER ${NB_UID}
+COPY Rprofile.site /opt/conda/lib/R/etc/Rprofile.site
+
+RUN Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
+  Rscript -e "install.packages('canlang', dependencies=TRUE)"
 
 WORKDIR "${HOME}"
