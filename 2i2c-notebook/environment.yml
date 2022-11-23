@@ -35,7 +35,7 @@ dependencies:
   - ipympl
   - ipysheet
   - ipycanvas
-  - ipywidgets
+  - ipywidgets>=7.1,<8
   - jupyterlab-blockly
   - jupyter_client
   - lapack
