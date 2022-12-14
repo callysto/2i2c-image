@@ -29,6 +29,7 @@ dependencies:
   - geopandas
   - googletrans
   - gxx_linux-64
+  - haversine
   - h5py
   - html5lib
   - imageio
