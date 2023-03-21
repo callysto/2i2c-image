@@ -20,3 +20,5 @@ jupyter-tree-download
 nbgitpuller
 # Workaround for qgrid maintenance issues
 git+https://github.com/ianabc/qgrid.git@ipywidgets8-jlab3
+# RISE, why is it always RISE causing problems!
+RISE

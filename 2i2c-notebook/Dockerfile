@@ -35,10 +35,14 @@ COPY ./jupyter_notebook_config.py /etc/jupyter/
 
 USER ${NB_UID}
 
+RUN mkdir -p /opt/conda/share/jupyter/lab/settings && \
+  chown ${NB_USER}:${NB_GID} /opt/conda/share/jupyter/lab
+COPY --chown=${NB_USER}:${NB_GID} jupyterlab-overrides.json \
+  /opt/conda/share/jupyter/lab/settings/overrides.json
+
 COPY conda-linux-64.lock /tmp/conda-linux-64.lock
 RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
     mamba clean --all -y -f && \
-    conda install --yes rise && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
