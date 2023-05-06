@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
   fonts-dejavu \
   python3-dev \
   hdf5-tools \
+  libcairo2-dev \
   libhdf5-103 \
   libgmp-dev \
   libmpfr-dev \

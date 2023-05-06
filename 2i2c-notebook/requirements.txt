@@ -20,4 +20,4 @@ jupyter-tree-download
 nbgitpuller
 RISE
 tortuemobile
-pycountr-convert
+pycountry-convert
