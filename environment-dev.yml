@@ -1,6 +1,7 @@
 name: callysto_2i2c_dev
 channels:
   - conda-forge
+  - nodefaults
 dependencies:
   - mamba
   - conda-lock

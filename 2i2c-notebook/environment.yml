@@ -1,6 +1,8 @@
 name: callysto_2i2c
 channels:
   - conda-forge
+  - r
+  - nodefaults
 dependencies:
   - altair
   - astropy
@@ -28,6 +30,7 @@ dependencies:
   - gmp
   - geopandas
   - googletrans
+  - gtts
   - gxx_linux-64
   - haversine
   - h5py
@@ -36,7 +39,7 @@ dependencies:
   - ipympl
   - ipysheet
   - ipycanvas
-  - ipywidgets>=7.1,<8
+  - ipywidgets
   - jupyterlab-blockly
   - jupyter_client
   - lapack
@@ -67,12 +70,12 @@ dependencies:
   - pytables
   - pytest
   - pytrends
+  - rdflib
   - r-base
   - r-essentials
   - r-car
   - r-caret
   - r-crayon
-  - r-devtools
   - r-dplyr
   - r-forecast
   - r-ggally
@@ -97,7 +100,6 @@ dependencies:
   - r-rcurl
   - r-testthat
   - r-tidyverse
-  - rdflib
   - scikit-image
   - scikit-learn
   - scipy
