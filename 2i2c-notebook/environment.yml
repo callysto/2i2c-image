@@ -77,6 +77,7 @@ dependencies:
   - r-car
   - r-caret
   - r-crayon
+  - r-devtools
   - r-dplyr
   - r-forecast
   - r-ggally
