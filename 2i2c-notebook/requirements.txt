@@ -21,3 +21,4 @@ nbgitpuller
 RISE
 tortuemobile
 pycountry-convert
+pybaseball
