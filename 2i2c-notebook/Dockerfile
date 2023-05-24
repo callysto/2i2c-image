@@ -35,6 +35,9 @@ COPY ./jupyter_server_config.py /tmp/jupyter_server_config.py
 RUN cat /tmp/jupyter_server_config.py >> /etc/jupyter/jupyter_server_config.py && \
   fix-permissions /etc/jupyter
 
+COPY ./jupyter_notebook_config.py /etc/jupyter
+RUN fix-permissions /etc/jupyter
+
 USER ${NB_UID}
 
 RUN mkdir -p /opt/conda/share/jupyter/lab/settings && \
