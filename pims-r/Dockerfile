@@ -11,6 +11,5 @@ ENV NB_USER=jupyter \
     NB_UID=9999
 ENV XDG_CACHE_HOME=/home/$NB_USER/.cache/ \
     HOME=/home/$NB_USER
-HEALTHCHECK --interval=120s --timeout=60s --start-period=30s --retries=3 \
-    CMD /etc/jupyter/docker_healthcheck.py || exit 1
+HEALTHCHECK NONE
 WORKDIR "${HOME}"

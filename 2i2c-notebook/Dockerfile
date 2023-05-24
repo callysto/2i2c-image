@@ -31,8 +31,9 @@ RUN apt-get update && apt-get install -y \
   gnupg procps tzdata vim && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && ln -s /bin/tar /bin/gtar
 
-RUN mkdir -p /etc/jupyter
-COPY ./jupyter_notebook_config.py /etc/jupyter/
+COPY ./jupyter_server_config.py /tmp/jupyter_server_config.py
+RUN cat /tmp/jupyter_server_config.py >> /etc/jupyter/jupyter_server_config.py && \
+  fix-permissions /etc/jupyter
 
 USER ${NB_UID}
 
@@ -56,7 +57,7 @@ WORKDIR /tmp
 # Install facets which does not have a pip or conda package at the moment
 # Also add qgrid extension because conda package is currently broken
 RUN git clone https://github.com/PAIR-code/facets.git && \
-    jupyter nbextension install facets/facets-dist/ --sys-prefix && \
+    jupyter-nbclassic-extension install facets/facets-dist/ --sys-prefix && \
     jupyter-nbclassic-extension enable qgrid --py --sys-prefix && \
     rm -rf /tmp/facets && \
     fix-permissions "${CONDA_DIR}" && \
@@ -68,7 +69,7 @@ ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
 RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
     fix-permissions "/home/${NB_USER}"
 
-RUN jupyter nbextension install --py callystonb --sys-prefix && \
+RUN jupyter nbclassic-extension install --py callystonb --sys-prefix && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
