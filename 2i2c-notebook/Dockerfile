@@ -31,12 +31,10 @@ RUN apt-get update && apt-get install -y \
   gnupg procps tzdata vim && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && ln -s /bin/tar /bin/gtar
 
-COPY ./jupyter_server_config.py /tmp/jupyter_server_config.py
-RUN cat /tmp/jupyter_server_config.py >> /etc/jupyter/jupyter_server_config.py && \
+RUN echo "c.NotebookApp.show_banner = False" >> /etc/jupyter/jupyter_notebook_config.py && \
+  echo "c.ServerApp.show_banner = False" >> /etc/jupyter/jupyter_server_config.py && \
+  echo "c.ServerApp.default_url = '/tree'" >> /etc/juptyer/jupyter_server_config.py && \
   fix-permissions /etc/jupyter
-
-COPY ./jupyter_notebook_config.py /etc/jupyter
-RUN fix-permissions /etc/jupyter
 
 USER ${NB_UID}
 
