@@ -1,0 +1,24 @@
+latimes-calculate
+pdfdocument
+pivottablejs
+# Update Nov 21 2019
+cufflinks
+plotly-express
+mobilechelonian
+# Update July 15, 2020
+gTTS
+# Bugs in google translate
+googletrans==3.1.0a0
+# Callysto nbextension - temporary fix for CAN-156
+git+https://github.com/callysto/callystonb
+# Added for Byron Aug 11, 2020
+pycountry-convert
+shifterator
+wbdata
+jupyter-tree-download
+# Workaround for https://github.com/jupyterhub/nbgitpuller/issues/176 waiting for conda
+nbgitpuller
+RISE
+tortuemobile
+pycountry-convert
+pybaseball

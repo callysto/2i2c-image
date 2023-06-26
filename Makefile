@@ -14,7 +14,8 @@ COMMIT := $$(git log -1 --pretty=%h)
 # All of the images
 ALL_IMAGES:= \
 	2i2c-notebook \
-	pims-r
+	pims-r \
+	pims-syzygy
 
 # Enable BuildKit for Docker build
 export DOCKER_BUILDKIT:=1
