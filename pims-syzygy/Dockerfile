@@ -33,7 +33,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN echo "c.NotebookApp.show_banner = False" >> /etc/jupyter/jupyter_notebook_config.py && \
   echo "c.ServerApp.show_banner = False" >> /etc/jupyter/jupyter_server_config.py && \
-  echo "c.ServerApp.default_url = '/tree'" >> /etc/jupyter/jupyter_server_config.py && \
   fix-permissions /etc/jupyter
 
 USER ${NB_UID}
