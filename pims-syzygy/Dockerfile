@@ -67,8 +67,7 @@ ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
 RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
     fix-permissions "/home/${NB_USER}"
 
-RUN jupyter nbclassic-extension install --py callystonb --sys-prefix && \
-    fix-permissions "${CONDA_DIR}" && \
+RUN fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
 COPY Rprofile.site /opt/conda/lib/R/etc/Rprofile.site

@@ -6,6 +6,7 @@ channels:
 dependencies:
   - altair
   - astropy
+  - basemap
   - beautifulsoup4
   - black
   - boto3
@@ -53,6 +54,7 @@ dependencies:
   - nltk
   - nbconvert[qtpdf]
   - nbconvert[qtpng]
+  - nbgitpuller
   - numba
   - numexpr
   - nodejs
@@ -118,7 +120,6 @@ dependencies:
   - sympy
   - textblob
   - textstat
-  - torchvision-cpu
   - tqdm
   - vega
   - vega_datasets
