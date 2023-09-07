@@ -118,8 +118,6 @@ dependencies:
   - textblob
   - textstat
   - tqdm
-  - vega
-  - vega_datasets
   - unidecode
   - widgetsnbextension
   - wikipedia
