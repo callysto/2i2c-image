@@ -53,6 +53,7 @@ dependencies:
   - nltk
   - nbconvert[qtpdf]
   - nbconvert[qtpng]
+  - notebook<7
   - numba
   - numexpr
   - nodejs
@@ -114,7 +115,6 @@ dependencies:
   - statsmodels
   - stats_can
   - sympy
-  - tensorflow-cpu
   - textblob
   - textstat
   - tqdm
