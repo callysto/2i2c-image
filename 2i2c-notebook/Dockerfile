@@ -43,14 +43,14 @@ RUN mkdir -p /opt/conda/share/jupyter/lab/settings && \
 COPY --chown=${NB_USER}:${NB_GID} jupyterlab-overrides.json \
   /opt/conda/share/jupyter/lab/settings/overrides.json
 
-COPY conda-linux-64.lock /tmp/conda-linux-64.lock
+COPY --chown=${NB_USER}:${NB_GID} conda-linux-64.lock /tmp/conda-linux-64.lock
 RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
     mamba clean --all -y -f && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
-COPY pip.conf /etc/pip.conf
-COPY requirements.txt /tmp/requirements.txt
+COPY --chown=${NB_UID}:${NB_GID} pip.conf /etc/pip.conf
+COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/requirements.txt
 RUN echo "Installing python packages using pip from requirements.txt..." \
     && ${NB_PYTHON_PREFIX}/bin/pip install --no-cache-dir -r /tmp/requirements.txt
 
