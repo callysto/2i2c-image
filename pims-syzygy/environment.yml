@@ -72,8 +72,6 @@ dependencies:
   - pyspellchecker
   - pytables
   - pytest
-  - python=3.11
-  - pytorch-cpu
   - pytrends
   - rdflib
   - r-base
