@@ -71,7 +71,6 @@ dependencies:
   - pytables
   - pytest
   - pytrends
-  - qgrid
   - rdflib
   - r-base
   - r-essentials
