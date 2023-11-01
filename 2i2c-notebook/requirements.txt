@@ -24,4 +24,4 @@ pycountry-convert
 pybaseball
 ColabTurtlePlus
 # qgrid, why is it always *@#&! qgrid
-qgrid
+qgrid @ git+https://github.com/JohnOmernik/qgrid.git@main
