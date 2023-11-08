@@ -1,4 +1,4 @@
-name: callysto_2i2c
+Bname: callysto_2i2c
 channels:
   - conda-forge
   - r
@@ -40,6 +40,7 @@ dependencies:
   - ipympl
   - ipysheet
   - ipycanvas
+  - ipydatagrid
   - ipywidgets>=8
   - jupyterlab-blockly
   - jupyter_client
