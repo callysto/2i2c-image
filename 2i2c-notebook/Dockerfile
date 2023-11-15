@@ -59,7 +59,6 @@ WORKDIR /tmp
 # Also add qgrid extension because conda package is currently broken
 RUN git clone https://github.com/PAIR-code/facets.git && \
     jupyter-nbclassic-extension install facets/facets-dist/ --sys-prefix && \
-    jupyter-nbclassic-extension enable qgrid --py --sys-prefix && \
     rm -rf /tmp/facets && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
