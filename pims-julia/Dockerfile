@@ -58,17 +58,13 @@ RUN mkdir -p /opt/cmdstan \
   && chmod 755 /etc/profile.d/cmdstan.sh \
   && rm -rf /opt/cmdstan
 
-ARG julia_version="1.9.4"
-ARG julia_checksum="07d20c4c2518833e2265ca0acee15b355463361aa4efdab858dad826cf94325c"
+ARG julia_version="1.6.7"
+ARG julia_checksum="6c4522d595e4cbcd00157ac458a72f8aec01757053d2073f99daa39e442b2a36"
 
 # Julia
 ENV JULIA_VERSION="${julia_version}"
 ENV JULIA_DIR="/opt/julia-${JULIA_VERSION}"
 ENV JULIA_PKGDIR="/opt/julia-${JULIA_VERSION}/local/share/julia"
-
-ENV NB_USER="jovyan"
-ENV HOME="/home/${NB_USER}"
-WORKDIR ${HOME}
 
 RUN mkdir -p "/opt/julia-${JULIA_VERSION}" \
   && wget -q https://julialang-s3.julialang.org/bin/linux/x64/$(echo "${JULIA_VERSION}" | cut -d. -f 1,2)"/julia-${JULIA_VERSION}-linux-x86_64.tar.gz" \
@@ -79,14 +75,16 @@ RUN mkdir -p "/opt/julia-${JULIA_VERSION}" \
   && chown -R "${NB_USER}" "${JULIA_DIR}" \
   && fix-permissions "${JULIA_DIR}"
 
-ADD package-installs.jl /tmp/package-installs.jl
+USER jovyan
+COPY --chown=${NB_UID}:${NB_GID} package-installs.jl /tmp/package-installs.jl
+ENV NB_USER="jovyan" \
+    HOME="/home/jovyan"
+
 RUN julia /tmp/package-installs.jl \
  && mv ${HOME}/.local/share/jupyter/kernels/julia* ${CONDA_DIR}/share/jupyter/kernels/ \
  && rm -rf "${HOME}/.local" \
  && echo "push!(LOAD_PATH, \"${JULIA_PKGDIR}/environments/v$(echo ${JULIA_VERSION} | cut -d'.' -f -2)\")" >> ${JULIA_DIR}/etc/julia/startup.jl \
  && echo "using Pkg; Pkg.activate(\"/home/jupyter/.julia/environments/v$(echo {JULIA_VERSION} | cut -d'.' -f -2)\")" >> ${JULIA_DIR}/etc/julia/startup.jl
-# && chmod g+rx "${JULIA_DIR}/local/share/julia/registries/" \
-# && chmod g+rx "${JULIA_DIR}/local/share/julia/registries/General"
 
 USER jupyter
 ENV NB_USER=jupyter \
