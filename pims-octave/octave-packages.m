@@ -1,9 +1,9 @@
-pkg install -forge -global audio;
 pkg install -forge -global coder;
 pkg install -forge -global femoctave;
-pkg install -forge -global general;
 pkg install -forge -global ltfat;
 pkg install -forge -global netcdf;
+pkg install -forge -global pkg-octave-doc;
 pkg install -forge -global pythonic;
 pkg install -forge -global statistics-bootstrap;
+pkg install -forge -global statistics;
 pkg install -forge -global symbolic;
