@@ -10,15 +10,17 @@ dependencies:
   - beautifulsoup4
   - black
   - boto3
+  - bokeh
   - bottleneck
+  - biopython
   - cartopy
   - cloudpickle
   - colorlover
-  - conda
   - conda-forge::blas=*=openblas
   - cvxopt
   - cython
   - dask
+  - dill
   - flake8
   - folium
   - fuzzywuzzy
@@ -28,6 +30,7 @@ dependencies:
   - gfortran_linux-64
   - gh-scoped-creds
   - gmp
+  - geopandas
   - googletrans
   - gtts
   - gxx_linux-64
@@ -45,8 +48,8 @@ dependencies:
   - lapack
   - lxml
   - markdown
-  - memory_profiler
   - matplotlib-base
+  - memory_profiler
   - mpfr
   - mpld3
   - nbconvert
@@ -59,7 +62,6 @@ dependencies:
   - numexpr
   - nodejs
   - openpyxl
-  - packaging
   - pandas
   - patsy
   - plotly
@@ -119,9 +121,9 @@ dependencies:
   - textblob
   - textstat
   - tqdm
-  - vega
-  - vega_datasets
   - unidecode
   - widgetsnbextension
   - wikipedia
+  - wordcloud
   - xlrd
+  - xlsxwriter
