@@ -7,6 +7,7 @@ dependencies:
   - altair
   - anywidget
   - astropy
+  - basemap
   - beautifulsoup4
   - black
   - boto3
@@ -116,6 +117,7 @@ dependencies:
   - statsmodels
   - stats_can
   - sympy
+  - tabulate
   - textblob
   - textstat
   - tqdm
