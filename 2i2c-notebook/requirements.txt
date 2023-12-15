@@ -26,3 +26,5 @@ ColabTurtlePlus
 # qgrid, why is it always *@#&! qgrid
 #qgrid @ git+https://github.com/JohnOmernik/qgrid.git@main
 tflite-runtime
+# jupyterhub issue launching nb7 https://github.com/jupyterhub/jupyterhub/issues/4649
+git+https://github.com/jupyterhub/jupyterhub.git
