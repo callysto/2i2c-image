@@ -1,0 +1,14 @@
+canvasapi
+cs103
+fastkml
+latimes-calculate
+mdutils
+otter-grader
+pdfdocument
+pivottablejs
+python-dotenv
+psutil
+pytest
+qeds
+unidecode
+RISE

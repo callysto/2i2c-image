@@ -1,0 +1,11 @@
+assign('localPkgDir', "~/R/x86_64-pc-linux-gnu-library/4.3", envir = globalenv())
+dir.create(localPkgDir, recursive=TRUE, showWarnings = FALSE)
+
+.libPaths(c(localPkgDir, .libPaths()))
+
+local({
+      r <- getOption("repos")
+        r['CRAN'] <- 'https://mirror.rcg.sfu.ca/mirror/CRAN/';
+          options(repos = r)
+})
+
