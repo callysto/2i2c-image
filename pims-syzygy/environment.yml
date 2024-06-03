@@ -65,6 +65,7 @@ dependencies:
   - pandas
   - patsy
   - plotly
+  - polars
   - proj
   - protobuf
   - psutil
