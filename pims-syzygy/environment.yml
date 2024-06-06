@@ -129,3 +129,5 @@ dependencies:
   - wordcloud
   - xlrd
   - xlsxwriter
+  - tensorflow-cpu
+  - keras
