@@ -56,8 +56,6 @@ dependencies:
   - numba
   - numexpr
   - nodejs
-  - octave
-  - octave_kernel
   - openpyxl
   - pandas
   - patsy
@@ -123,4 +121,5 @@ dependencies:
   - widgetsnbextension
   - wikipedia
   - wordcloud
+  - xeus-octave
   - xlrd
