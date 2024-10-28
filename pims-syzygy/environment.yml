@@ -105,6 +105,7 @@ dependencies:
   - r-stringr
   - r-tidyr
   - r-rcurl
+  - r-teachingdemos
   - r-testthat
   - r-tidyverse
   - scikit-image
