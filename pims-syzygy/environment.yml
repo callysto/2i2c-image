@@ -4,6 +4,7 @@ channels:
   - r
   - nodefaults
 dependencies:
+  - python ==3.12
   - altair
   - astropy
   - basemap
@@ -112,10 +113,6 @@ dependencies:
   - scikit-learn
   - scipy
   - seaborn
-  - spacy
-  - spacy-model-en_core_web_sm
-  - spacy-model-en_core_web_md
-  - spacy-model-en_core_web_lg
   - sqlalchemy
   - statsmodels
   - stats_can
@@ -130,5 +127,3 @@ dependencies:
   - wordcloud
   - xlrd
   - xlsxwriter
-  - tensorflow-cpu
-  - keras

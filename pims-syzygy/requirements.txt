@@ -1,4 +1,3 @@
-canvasapi
 cs103
 fastkml
 latimes-calculate
