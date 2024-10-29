@@ -1,4 +1,4 @@
-ARG BASE_CONTAINER=jupyter/minimal-notebook:latest
+ARG BASE_CONTAINER=quay.io/jupyter/minimal-notebook:latest
 FROM $BASE_CONTAINER
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}
 
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
   python3-dev \
   hdf5-tools \
   libcairo2-dev \
-  libhdf5-103 \
+  libhdf5-hl-100t64 \
   libgmp-dev \
   libmpfr-dev \
   libzmq5 \
