@@ -48,6 +48,7 @@ dependencies:
   - jupyter_client
   - lapack
   - lxml
+  - mamba
   - markdown
   - matplotlib-base
   - memory_profiler
