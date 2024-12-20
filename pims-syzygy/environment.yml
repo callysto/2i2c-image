@@ -4,7 +4,6 @@ channels:
   - r
   - nodefaults
 dependencies:
-  - python ==3.12
   - altair
   - astropy
   - basemap
