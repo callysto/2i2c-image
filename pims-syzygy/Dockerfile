@@ -43,7 +43,7 @@ COPY --chown=${NB_USER}:${NB_GID} jupyterlab-overrides.json \
   /opt/conda/share/jupyter/lab/settings/overrides.json
 
 COPY --chown=${NB_USER}:${NB_GID} conda-linux-64.lock /tmp/conda-linux-64.lock
-RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
+RUN mamba install --yes --file /tmp/conda-linux-64.lock && \
     mamba clean --all -y -f && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
@@ -72,8 +72,8 @@ RUN fix-permissions "${CONDA_DIR}" && \
 
 COPY --chown=${NB_USER}:${NB_GID} Rprofile.site /opt/conda/lib/R/etc/Rprofile.site
 
-RUN Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
-  Rscript -e "install.packages('canlang', dependencies=TRUE)"
+RUN /opt/conda/bin/Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
+  /opt/conda/bin/Rscript -e "install.packages('canlang', dependencies=TRUE)"
 
 USER root
 
