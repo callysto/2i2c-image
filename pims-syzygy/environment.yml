@@ -45,6 +45,7 @@ dependencies:
   - jupyterlab-blockly
   - jupyterlab-git
   - jupyter_client
+  - jupyter-server-proxy
   - lapack
   - lxml
   - mamba
@@ -63,6 +64,7 @@ dependencies:
   - numexpr
   - nodejs
   - openpyxl
+  - openrefine
   - pandas
   - patsy
   - plotly
