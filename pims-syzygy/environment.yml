@@ -63,8 +63,8 @@ dependencies:
   - numba
   - numexpr
   - nodejs
+  - openjdk
   - openpyxl
-  - openrefine
   - pandas
   - patsy
   - plotly
