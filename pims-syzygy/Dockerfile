@@ -74,10 +74,15 @@ COPY --chown=${NB_USER}:${NB_GID} Rprofile.site /opt/conda/lib/R/etc/Rprofile.si
 
 RUN /opt/conda/bin/Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
   /opt/conda/bin/Rscript -e "install.packages('canlang', dependencies=TRUE)"
+WORKDIR /opt/openrefine
+
+RUN curl -sSL https://github.com/OpenRefine/OpenRefine/releases/download/3.8.7/openrefine-linux-3.8.7.tar.gz | tar -xz --strip 1
+RUN curl -sSL -o /opt/openrefine/logo.svg https://upload.wikimedia.org/wikipedia/commons/9/9b/OpenRefine_favicon_%282018-present%29.svg 
+COPY --chown=${NB_USER}:${NB_GID} jupyter_server_config.py /opt/conda/etc/jupyter/jupyter_server_config.py
 
 USER root
 
-ENV SHELL /bin/bash
+ENV SHELL=/bin/bash
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 
 USER jupyter
