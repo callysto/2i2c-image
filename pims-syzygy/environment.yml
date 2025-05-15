@@ -13,6 +13,7 @@ dependencies:
   - bokeh
   - bottleneck
   - biopython
+  - capnproto
   - cartopy
   - cloudpickle
   - colorlover
@@ -32,6 +33,7 @@ dependencies:
   - gmp
   - geopandas
   - googletrans
+  - graphviz
   - gtts
   - gxx_linux-64
   - haversine
@@ -63,6 +65,7 @@ dependencies:
   - numba
   - numexpr
   - nodejs
+  - opam
   - openjdk
   - openpyxl
   - pandas
@@ -72,6 +75,7 @@ dependencies:
   - proj
   - protobuf
   - psutil
+  - pymongo
   - pyppeteer
   - pyqt
   - pysal
@@ -130,3 +134,4 @@ dependencies:
   - wordcloud
   - xlrd
   - xlsxwriter
+  - xxhash
