@@ -59,3 +59,4 @@ for package=metadata_packages
 end
 
 Pkg.resolve()
+Pkg.precompile()
