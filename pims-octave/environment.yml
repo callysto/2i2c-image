@@ -121,5 +121,6 @@ dependencies:
   - widgetsnbextension
   - wikipedia
   - wordcloud
-  - xeus-octave
+  - octave
+  - octave_kernel
   - xlrd
