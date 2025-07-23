@@ -75,6 +75,8 @@ COPY --chown=${NB_USER}:${NB_GID} Rprofile.site /opt/conda/lib/R/etc/Rprofile.si
 RUN Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
   Rscript -e "install.packages('canlang', dependencies=TRUE)"
 
+RUN jupyter lab build
+
 USER root
 
 ENV SHELL /bin/bash
