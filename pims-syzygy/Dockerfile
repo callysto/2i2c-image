@@ -43,7 +43,7 @@ COPY --chown=${NB_USER}:${NB_GID} jupyterlab-overrides.json \
   /opt/conda/share/jupyter/lab/settings/overrides.json
 
 COPY --chown=${NB_USER}:${NB_GID} conda-linux-64.lock /tmp/conda-linux-64.lock
-RUN mamba install --quiet --file /tmp/conda-linux-64.lock && \
+RUN mamba install --yes --quiet --file /tmp/conda-linux-64.lock && \
     mamba clean --all -y -f && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
@@ -94,4 +94,3 @@ ENV XDG_CACHE_HOME=/home/$NB_USER/.cache/ \
 HEALTHCHECK NONE
 
 WORKDIR "${HOME}"
-

@@ -1,4 +1,4 @@
-ARG BASE_CONTAINER=jupyter/minimal-notebook:latest
+ARG BASE_CONTAINER=quay.io/jupyter/minimal-notebook:latest
 FROM $BASE_CONTAINER
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}
 
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
   python3-dev \
   hdf5-tools \
   libcairo2-dev \
-  libhdf5-103 \
+  libhdf5-hl-100t64 \
   libgmp-dev \
   libmpfr-dev \
   libzmq5 \
@@ -43,7 +43,7 @@ COPY --chown=${NB_USER}:${NB_GID} jupyterlab-overrides.json \
   /opt/conda/share/jupyter/lab/settings/overrides.json
 
 COPY --chown=${NB_USER}:${NB_GID} conda-linux-64.lock /tmp/conda-linux-64.lock
-RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
+RUN mamba install --quiet --file /tmp/conda-linux-64.lock && \
     mamba clean --all -y -f && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
@@ -74,6 +74,8 @@ COPY --chown=${NB_USER}:${NB_GID} Rprofile.site /opt/conda/lib/R/etc/Rprofile.si
 
 RUN Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
   Rscript -e "install.packages('canlang', dependencies=TRUE)"
+
+RUN jupyter lab build
 
 USER root
 

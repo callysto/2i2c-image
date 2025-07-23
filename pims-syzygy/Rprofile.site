@@ -5,7 +5,7 @@ dir.create(localPkgDir, recursive=TRUE, showWarnings = FALSE)
 
 local({
       r <- getOption("repos")
-        r['CRAN'] <- 'https://mirror.rcg.sfu.ca/mirror/CRAN/';
+        r['CRAN'] <- 'https://mirror.csclub.uwaterloo.ca/CRAN/';
           options(repos = r)
 })
 
