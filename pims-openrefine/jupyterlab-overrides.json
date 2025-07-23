@@ -1,0 +1,12 @@
+{
+  "@jupyterlab/apputils-extension:notification": {
+    "fetchNews": "false",
+    "doNotDisturbMode": true,
+    "checkForUpdates": false
+  },
+  "@jupyterlab/apputils-extension:announcements": {
+    "fetchNews": "false",
+    "doNotDisturbMode": true,
+    "checkForUpdates": false
+  }
+}

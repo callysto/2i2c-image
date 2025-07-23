@@ -1,0 +1,12 @@
+assign('localPkgDir', "~/R/x86_64-pc-linux-gnu-library/4.4", envir = globalenv())
+dir.create(localPkgDir, recursive=TRUE, showWarnings = FALSE)
+
+.libPaths(c(localPkgDir, .libPaths()))
+
+local({
+      r <- getOption("repos")
+        r['CRAN'] <- 'https://mirror.csclub.uwaterloo.ca/CRAN/';
+          options(repos = r)
+})
+
+options(jupyter.plot_mimetypes = c('text/plain', 'image/png', 'image/jpeg', 'image/svg+xml', 'application/pdf'))
