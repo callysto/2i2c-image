@@ -123,4 +123,6 @@ dependencies:
   - wordcloud
   - octave
   - octave_kernel
+  - hdf5
+  - libnetcdf
   - xlrd

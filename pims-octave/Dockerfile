@@ -1,16 +1,22 @@
-ARG BASE_CONTAINER=jupyter/minimal-notebook:latest
+ARG BASE_CONTAINER=quay.io/jupyter/minimal-notebook:latest
 FROM $BASE_CONTAINER
-LABEL maintainer="Ian Allison <iana@pims.math.ca>"
+ENV NB_PYTHON_PREFIX=${CONDA_DIR}
+
+LABEL maintainer="Syzygy Project <jupyter@pims.math.ca>
+
+# Fix: https://github.com/hadolint/hadolint/wiki/DL4006
+# Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
   autoconf \
   automake \
   bison \
   build-essential \
   clang \
   cmake \
+  cmsuper \
   curl \
   dbus \
   dvipng \
@@ -69,6 +75,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   lzip \
   make \
   mercurial \
+  netcdf-bin \
+  libnetcdf-dev \
   nettle-dev \
   openjdk-11-jdk \
   openjdk-8-jdk \
@@ -95,13 +103,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   zlib1g-dev && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN echo "c.NotebookApp.show_banner = False" >> /etc/jupyter/jupyter_notebook_config.py && \
+  echo "c.ServerApp.show_banner = False" >> /etc/jupyter/jupyter_server_config.py && \
+  fix-permissions /etc/jupyter
+
+USER ${NB_UID}
+
 RUN mkdir -p /opt/conda/share/jupyter/lab/settings && \
   chown ${NB_USER}:${NB_GID} /opt/conda/share/jupyter/lab
 COPY --chown=${NB_USER}:${NB_GID} jupyterlab-overrides.json \
   /opt/conda/share/jupyter/lab/settings/overrides.json
 
 COPY --chown=${NB_USER}:${NB_GID} conda-linux-64.lock /tmp/conda-linux-64.lock
-RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
+RUN mamba install --quiet --file /tmp/conda-linux-64.lock && \
     mamba clean --all -y -f && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
@@ -136,7 +150,7 @@ RUN Rscript -e "install.packages('repurrsive', dependencies=TRUE)" && \
 
 USER root
 
-ENV SHELL /bin/bash
+ENV SHELL=/bin/bash
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 
 USER jupyter
