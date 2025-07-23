@@ -2,7 +2,7 @@ ARG BASE_CONTAINER=quay.io/jupyter/minimal-notebook:latest
 FROM $BASE_CONTAINER
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}
 
-LABEL maintainer="Syzygy Project <jupyter@pims.math.ca>
+LABEL maintainer="Syzygy Project <jupyter@pims.math.ca>"
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   clang \
   cmake \
-  cmsuper \
+  cm-super \
   curl \
   dbus \
   dvipng \
