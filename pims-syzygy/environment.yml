@@ -110,6 +110,7 @@ dependencies:
   - r-rcurl
   - r-teachingdemos
   - r-testthat
+  - r-tidymodels
   - r-tidyverse
   - scikit-image
   - scikit-learn
