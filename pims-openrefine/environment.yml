@@ -95,6 +95,7 @@ dependencies:
   - r-hmisc
   - r-irkernel
   - r-janitor
+  - r-kknn
   - r-languageserver
   - r-lsmeans
   - r-nycflights13
@@ -107,6 +108,7 @@ dependencies:
   - r-shiny
   - r-stringi
   - r-stringr
+  - r-tidymodels
   - r-tidyr
   - r-rcurl
   - r-teachingdemos

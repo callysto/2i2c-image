@@ -90,6 +90,7 @@ dependencies:
   - r-hmisc
   - r-irkernel
   - r-janitor
+  - r-kknn
   - r-languageserver
   - r-lsmeans
   - r-nycflights13
@@ -105,6 +106,7 @@ dependencies:
   - r-tidyr
   - r-rcurl
   - r-testthat
+  - r-tidymodels
   - r-tidyverse
   - sage
   - scikit-image
