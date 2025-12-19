@@ -4,6 +4,7 @@ pkg install -forge -global ltfat;
 pkg install -forge -global netcdf;
 pkg install -forge -global pkg-octave-doc;
 pkg install -forge -global pythonic;
+pkg install -forge -global datatypes;
 pkg install -forge -global statistics-resampling;
 pkg install -forge -global statistics;
 pkg install -forge -global symbolic;
